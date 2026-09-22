@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rose Freitas — Negócios & Marketing Digital</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💼</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    box-sizing:border-box;
+    --ink:#211D17;
+    --ink-soft:#4A4438;
+    --paper:#F3F0E9;
+    --paper-raised:#FFFFFF;
+    --sand:#DED2BC;
+    --brass:#A9791F;
+    --brass-deep:#8A6318;
+    --forest:#2E4438;
+    --line:#D8CFBE;
+    --radius:2px;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#EFE9DC;
+      --ink-soft:#C7BEAC;
+      --paper:#1B1811;
+      --paper-raised:#242019;
+      --sand:#332C21;
+      --brass:#D3A548;
+      --brass-deep:#E8BE68;
+      --forest:#8FB39E;
+      --line:#3A3327;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#EFE9DC;
+    --ink-soft:#C7BEAC;
+    --paper:#1B1811;
+    --paper-raised:#242019;
+    --sand:#332C21;
+    --brass:#D3A548;
+    --brass-deep:#E8BE68;
+    --forest:#8FB39E;
+    --line:#3A3327;
+  }
+  html{scroll-behavior:smooth; scroll-padding-top:calc(84px + env(safe-area-inset-top,0px));}
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Public Sans',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.serif{
+    font-family:'Newsreader',serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    margin:0;
+  }
+  p{margin:0; color:var(--ink-soft); line-height:1.65;}
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 clamp(20px,5vw,56px);}
+  ::selection{background:var(--brass); color:var(--paper);}
+  :focus-visible{outline:2px solid var(--brass); outline-offset:3px;}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    padding-top:env(safe-area-inset-top,0px);
+    background:color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    max-width:1180px; margin:0 auto; padding:16px clamp(20px,5vw,56px);
+  }
+  .brand{display:flex; align-items:center; gap:10px; font-family:'Newsreader',serif; font-size:1.15rem;}
+  .brand .mark{
+    width:34px; height:34px; border-radius:50%;
+    border:1px solid var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    font-size:.85rem; letter-spacing:.02em;
+  }
+  .nav-links{display:flex; gap:28px; font-size:.94rem;}
+  .nav-links a{position:relative; padding:4px 0;}
+  .nav-links a::after{
+    content:""; position:absolute; left:0; right:0; bottom:0; height:1px;
+    background:var(--brass); transform:scaleX(0); transform-origin:left;
+    transition:transform .25s ease;
+  }
+  .nav-links a:hover::after{transform:scaleX(1);}
+  .nav-cta{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--ink); color:var(--paper);
+    padding:10px 18px; font-size:.88rem; font-weight:600;
+    border-radius:var(--radius);
+    white-space:nowrap;
+  }
+  .nav-toggle{display:none; background:none; border:none; color:var(--ink); font-size:1.6rem; cursor:pointer;}
+
+  @media (max-width:820px){
+    .nav-links{
+      position:fixed; inset:0; top:66px;
+      flex-direction:column; gap:0;
+      background:var(--paper); padding:10px 24px 30px;
+      border-bottom:1px solid var(--line);
+      transform:translateY(-8px); opacity:0; pointer-events:none;
+      transition:opacity .2s ease, transform .2s ease;
+    }
+    .nav-links.open{opacity:1; transform:translateY(0); pointer-events:auto;}
+    .nav-links a{padding:14px 0; border-bottom:1px solid var(--line); font-size:1.05rem;}
+    .nav-cta{display:none;}
+    .nav-toggle{display:block;}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:clamp(64px,10vw,120px) 0 clamp(56px,8vw,96px);
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.3fr .7fr; gap:56px; align-items:end;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    font-size:.85rem; color:var(--brass-deep); margin-bottom:22px;
+  }
+  .eyebrow .dot{width:6px; height:6px; border-radius:50%; background:var(--brass);}
+  .hero h1{
+    font-size:clamp(2.6rem,5.4vw,4.6rem);
+    line-height:1.04;
+    max-width:14ch;
+  }
+  .hero h1 em{font-style:italic; color:var(--brass-deep);}
+  .hero-sub{
+    margin-top:26px; font-size:1.14rem; max-width:46ch; color:var(--ink-soft);
+  }
+  .hero-actions{display:flex; gap:14px; margin-top:36px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:14px 26px; font-size:.95rem; font-weight:600;
+    border-radius:var(--radius); border:1px solid var(--ink);
+    cursor:pointer; transition:background .2s ease, color .2s ease, transform .15s ease;
+  }
+  .btn-solid{background:var(--ink); color:var(--paper);}
+  .btn-solid:hover{background:var(--brass-deep); border-color:var(--brass-deep); transform:translateY(-1px);}
+  .btn-line{background:transparent; color:var(--ink);}
+  .btn-line:hover{background:var(--ink); color:var(--paper);}
+
+  .hero-aside{
+    border-left:1px solid var(--line); padding-left:32px;
+  }
+  .hero-aside .stat{margin-bottom:22px;}
+  .hero-aside .stat b{
+    display:block; font-family:'Newsreader',serif; font-size:2.1rem; font-weight:500;
+  }
+  .hero-aside .stat span{font-size:.85rem; color:var(--ink-soft);}
+
+  @media (max-width:820px){
+    .hero-grid{grid-template-columns:1fr; gap:36px;}
+    .hero-aside{border-left:none; border-top:1px solid var(--line); padding-left:0; padding-top:28px; display:flex; gap:32px;}
+    .hero-aside .stat{margin-bottom:0;}
+  }
+
+  /* ---------- Section generic ---------- */
+  section{padding:clamp(64px,9vw,104px) 0;}
+  .section-head{
+    display:grid; grid-template-columns:auto 1fr; gap:40px; align-items:baseline;
+    margin-bottom:52px; border-bottom:1px solid var(--line); padding-bottom:28px;
+  }
+  .section-head .tag{font-size:.85rem; color:var(--brass-deep); white-space:nowrap;}
+  .section-head h2{font-size:clamp(1.9rem,3.4vw,2.7rem); max-width:16ch;}
+  @media (max-width:640px){ .section-head{grid-template-columns:1fr; gap:14px;} }
+
+  /* ---------- Sobre ---------- */
+  .about{
+    display:grid; grid-template-columns:.85fr 1.15fr; gap:64px; align-items:start;
+  }
+  .about-photo{
+    aspect-ratio:4/5; background:var(--sand);
+    border-radius:var(--radius);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Newsreader',serif; font-size:1rem; color:var(--ink-soft);
+    position:relative; overflow:hidden;
+  }
+  .about-photo::before{
+    content:"RF"; font-size:5rem; color:var(--paper-raised); opacity:.5; font-weight:500;
+  }
+  .about-photo .cap{position:absolute; bottom:14px; left:14px; right:14px; font-size:.78rem; background:color-mix(in srgb, var(--paper) 85%, transparent); padding:6px 10px; border-radius:var(--radius);}
+  .about p{font-size:1.05rem; margin-bottom:18px;}
+  .about p:last-of-type{margin-bottom:0;}
+  .credentials{
+    margin-top:30px; display:flex; flex-direction:column; gap:14px;
+  }
+  .credentials li{
+    list-style:none; display:flex; gap:14px; align-items:flex-start;
+    font-size:.96rem; color:var(--ink-soft);
+  }
+  .credentials b{color:var(--ink); font-weight:600; font-family:'Public Sans',sans-serif;}
+  .credentials .ico{color:var(--brass-deep); font-family:'Newsreader',serif; font-style:italic;}
+
+  @media (max-width:820px){ .about{grid-template-columns:1fr; gap:36px;} .about-photo{max-width:320px;} }
+
+  /* ---------- Curso (fases + módulos) ---------- */
+  .courses{border-top:1px solid var(--line); background:var(--paper-raised);}
+  .phase-list{display:flex; flex-direction:column;}
+  .phase{border-bottom:1px solid var(--line);}
+  .phase:first-child{border-top:1px solid var(--line);}
+  .phase summary{
+    display:grid; grid-template-columns:80px 1fr auto; gap:28px; align-items:center;
+    padding:26px 0; cursor:pointer; list-style:none;
+  }
+  .phase summary::-webkit-details-marker{display:none;}
+  .phase-num{font-family:'Newsreader',serif; font-size:1.6rem; color:var(--brass-deep);}
+  .phase-title{font-family:'Newsreader',serif; font-size:1.35rem; margin-bottom:6px;}
+  .phase-desc{font-size:.95rem; max-width:52ch;}
+  .phase-count{
+    font-size:.8rem; color:var(--ink-soft); text-align:right; white-space:nowrap;
+    border-left:1px solid var(--line); padding-left:24px;
+  }
+  .phase-count .chevron{display:inline-block; margin-left:8px; transition:transform .2s ease;}
+  .phase[open] .phase-count .chevron{transform:rotate(180deg);}
+  .phase-modules{
+    list-style:none; margin:0; padding:0 0 26px; display:flex; flex-direction:column; gap:10px;
+  }
+  .phase-modules li{
+    font-size:.92rem; color:var(--ink-soft); padding-left:24px; position:relative;
+  }
+  .phase-modules li::before{content:"—"; position:absolute; left:0; color:var(--brass-deep);}
+  .phase-modules b{color:var(--ink); font-weight:600;}
+  @media (max-width:700px){
+    .phase summary{grid-template-columns:44px 1fr; row-gap:8px;}
+    .phase-count{grid-column:2; border-left:none; padding-left:0; text-align:left; order:3;}
+    .phase-modules{padding-left:0;}
+  }
+
+  /* ---------- Bônus ---------- */
+  .bonus-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .bonus-card{background:var(--paper); padding:26px; display:flex; flex-direction:column; gap:10px;}
+  .bonus-card .n{font-family:'Newsreader',serif; color:var(--brass-deep); font-size:.95rem;}
+  .bonus-card h4{font-family:'Newsreader',serif; font-size:1.1rem; font-weight:500;}
+  .bonus-card p{font-size:.88rem;}
+
+  /* ---------- Planos ---------- */
+  .plans-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line);
+  }
+  .plan{
+    background:var(--paper); padding:38px 30px; display:flex; flex-direction:column; gap:22px;
+  }
+  .plan.featured{background:var(--ink); color:var(--paper);}
+  .plan.featured .price, .plan.featured h3{color:var(--paper);}
+  .plan.featured p, .plan.featured li{color:color-mix(in srgb, var(--paper) 72%, transparent);}
+  .plan.featured .btn-line{border-color:var(--paper); color:var(--paper);}
+  .plan.featured .btn-line:hover{background:var(--paper); color:var(--ink);}
+  .plan-badge{font-size:.78rem; color:var(--brass-deep);}
+  .plan h3{font-size:1.4rem;}
+  .price{font-family:'Newsreader',serif; font-size:2.3rem;}
+  .price sub{font-family:'Public Sans',sans-serif; font-size:.9rem; color:var(--ink-soft); font-weight:400;}
+  .plan ul{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px;}
+  .plan li{font-size:.92rem; padding-left:18px; position:relative;}
+  .plan li::before{content:"—"; position:absolute; left:0; color:var(--brass-deep);}
+  .plan .btn{justify-content:center; margin-top:auto;}
+  @media (max-width:820px){ .plans-grid{grid-template-columns:1fr;} }
+
+  /* ---------- Depoimentos ---------- */
+  .testimonials{background:var(--paper-raised); border-top:1px solid var(--line);}
+  .t-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .t-card{background:var(--paper); padding:34px 28px;}
+  .t-quote{font-family:'Newsreader',serif; font-style:italic; font-size:1.15rem; line-height:1.5; color:var(--ink);}
+  .t-who{margin-top:20px; font-size:.85rem; color:var(--ink-soft);}
+  @media (max-width:820px){ .t-grid{grid-template-columns:1fr;} }
+
+  /* ---------- Contato ---------- */
+  .contact{
+    padding:clamp(70px,10vw,120px) 0;
+  }
+  .contact-grid{
+    display:grid; grid-template-columns:1.1fr .9fr; gap:56px; align-items:center;
+  }
+  .contact h2{font-size:clamp(2rem,4vw,3rem); max-width:14ch;}
+  .contact p{font-size:1.05rem; margin-top:18px; max-width:44ch;}
+  .contact-actions{margin-top:32px; display:flex; gap:14px; flex-wrap:wrap;}
+  .contact-card{
+    border:1px solid var(--line); padding:32px; border-radius:var(--radius); background:var(--paper-raised);
+  }
+  .contact-card .row{display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line); font-size:.94rem;}
+  .contact-card .row:last-child{border-bottom:none;}
+  .contact-card .row span:first-child{color:var(--ink-soft);}
+  @media (max-width:820px){ .contact-grid{grid-template-columns:1fr; gap:36px;} }
+
+  /* ---------- Footer ---------- */
+  footer{
+    border-top:1px solid var(--line); padding:32px 0;
+    padding-bottom:calc(32px + env(safe-area-inset-bottom,0px));
+  }
+  .foot-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; font-size:.82rem; color:var(--ink-soft);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{scroll-behavior:auto !important; transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="brand"><span class="mark">RF</span> Rose Freitas</div>
+    <div class="nav-links" id="navLinks">
+      <a href="#sobre">Sobre</a>
+      <a href="#metodo">O Método</a>
+      <a href="#bonus">Bônus</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#contato">Inscrição</a>
+    </div>
+    <a class="nav-cta" href="https://wa.me/5531975219757" target="_blank" rel="noopener">Falar no WhatsApp</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">☰</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow"><span class="dot"></span>Curso online · Rose Freitas</div>
+      <h1>Método YouTube <em>360°</em></h1>
+      <p class="hero-sub">Transforme seu canal em uma fonte de renda de verdade. Um passo a passo completo para ir de conteúdo → audiência → confiança → oportunidade → renda, mesmo sem milhares de inscritos.</p>
+      <div class="hero-actions">
+        <a href="#contato" class="btn btn-solid">Quero me inscrever — R$ 39,90</a>
+        <a href="#metodo" class="btn btn-line">Ver o conteúdo do curso</a>
+      </div>
+    </div>
+    <div class="hero-aside">
+      <div class="stat"><b>20</b><span>aulas em vídeo</span></div>
+      <div class="stat"><b>4</b><span>fases do método</span></div>
+      <div class="stat"><b>5</b><span>bônus inclusos</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="wrap about">
+    <div class="about-photo"><span class="cap">Foto de Rose em breve</span></div>
+    <div>
+      <div class="section-head" style="border:none; padding:0; margin-bottom:24px; grid-template-columns:auto;">
+        <div class="tag">Quem ensina</div>
+        <h2>Rose Freitas</h2>
+      </div>
+      <p>Especialista em negócios digitais e marketing, Rose criou o Método YouTube 360° para quem quer parar de ver o YouTube apenas como um lugar de postar vídeos — e começar a enxergá-lo como uma ferramenta de audiência, relacionamento e renda.</p>
+      <p>O curso reúne, em um só lugar, tudo que Rose aplica para transformar canais em negócios reais: estratégia de conteúdo, retenção, monetização além do AdSense e um plano prático de 30 dias para sair do zero.</p>
+      <ul class="credentials">
+        <li><span class="ico">—</span><div><b>Conteúdo 100% prático</b><br>aplicável desde a primeira aula.</div></li>
+        <li><span class="ico">—</span><div><b>Sem depender só do AdSense</b><br>afiliados, patrocínio, comunidade e produtos digitais.</div></li>
+        <li><span class="ico">—</span><div><b>Suporte direto com a Rose</b><br>dúvidas respondidas pelo WhatsApp.</div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="metodo" class="courses">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="tag">20 aulas em vídeo</div>
+      <h2>O que você vai aprender</h2>
+    </div>
+    <div class="phase-list">
+
+      <details class="phase" open>
+        <summary>
+          <div class="phase-num">01</div>
+          <div><div class="phase-title">Estratégia e Posicionamento</div><div class="phase-desc">Entenda as formas de monetização do YouTube e defina o território do seu canal.</div></div>
+          <div class="phase-count">3 aulas <span class="chevron">▾</span></div>
+        </summary>
+        <ul class="phase-modules">
+          <li><b>O novo YouTube</b> — você não precisa depender apenas do AdSense</li>
+          <li><b>Escolha seu território</b> — tema, público, personalidade e formato</li>
+          <li><b>A estratégia dos 3 tipos de conteúdo</b> — alcance, autoridade e conversão</li>
+        </ul>
+      </details>
+
+      <details class="phase">
+        <summary>
+          <div class="phase-num">02</div>
+          <div><div class="phase-title">Criação que Prende Atenção</div><div class="phase-desc">Títulos, miniaturas, primeiro minuto e a estrutura que leva o espectador até o fim.</div></div>
+          <div class="phase-count">4 aulas <span class="chevron">▾</span></div>
+        </summary>
+        <ul class="phase-modules">
+          <li><b>Como criar vídeos que dão vontade de clicar</b> — título, miniatura e assunto</li>
+          <li><b>A técnica do primeiro minuto</b> — promessa, contexto e primeira entrega</li>
+          <li><b>O Método da Escada</b> — os 5 degraus de clique até conversão</li>
+          <li><b>Shorts + vídeos longos</b> — use cada formato para uma função</li>
+        </ul>
+      </details>
+
+      <details class="phase">
+        <summary>
+          <div class="phase-num">03</div>
+          <div><div class="phase-title">Monetização Além do AdSense</div><div class="phase-desc">Programa de Parcerias, afiliados, patrocínio, clubes e produtos digitais.</div></div>
+          <div class="phase-count">7 aulas <span class="chevron">▾</span></div>
+        </summary>
+        <ul class="phase-modules">
+          <li><b>Como chegar ao Programa de Parcerias do YouTube</b> — requisitos de elegibilidade</li>
+          <li><b>As horas de exibição</b> — o que realmente conta para as 4.000 horas</li>
+          <li><b>Monetização antes do AdSense</b> — construa renda antes de bater a meta</li>
+          <li><b>Afiliados</b> — venda a solução, não o produto</li>
+          <li><b>Patrocínio</b> — monte seu mídia kit e formatos de campanha</li>
+          <li><b>Clubes e comunidade</b> — crie experiências exclusivas para sua audiência</li>
+          <li><b>Produtos digitais</b> — transforme conhecimento em curso, e-book ou consultoria</li>
+        </ul>
+      </details>
+
+      <details class="phase">
+        <summary>
+          <div class="phase-num">04</div>
+          <div><div class="phase-title">Crescimento com IA e Consistência</div><div class="phase-desc">Uso responsável de IA, métricas que importam e um plano de 30 dias para sair do papel.</div></div>
+          <div class="phase-count">6 aulas <span class="chevron">▾</span></div>
+        </summary>
+        <ul class="phase-modules">
+          <li><b>IA no YouTube</b> — use como ferramenta, não como fábrica</li>
+          <li><b>O grande erro dos canais de notícias</b> — como transformar informação em conteúdo autoral</li>
+          <li><b>O sistema 1 → 5</b> — uma ideia, vários formatos de conteúdo</li>
+          <li><b>O painel de controle do criador</b> — atração, retenção, relacionamento, conversão e receita</li>
+          <li><b>O Índice 360°</b> — sua própria nota de avaliação para cada vídeo</li>
+          <li><b>O plano de 30 dias</b> — organização, publicação, otimização e monetização</li>
+        </ul>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<section id="bonus">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="tag">Incluso no curso</div>
+      <h2>5 bônus para aplicar na prática</h2>
+    </div>
+    <div class="bonus-grid">
+      <div class="bonus-card"><div class="n">Bônus 1</div><h4>Checklist de monetização</h4><p>Tudo para conferir antes de solicitar a monetização do seu canal.</p></div>
+      <div class="bonus-card"><div class="n">Bônus 2</div><h4>20 ideias de vídeos</h4><p>Títulos prontos para nunca mais travar na hora de gravar.</p></div>
+      <div class="bonus-card"><div class="n">Bônus 3</div><h4>Roteiro universal</h4><p>Estrutura de abertura, promessa, desenvolvimento e CTA para qualquer vídeo.</p></div>
+      <div class="bonus-card"><div class="n">Bônus 4</div><h4>A regra dos 3 cofres</h4><p>Organize sua renda entre plataforma, audiência e marcas.</p></div>
+      <div class="bonus-card"><div class="n">Bônus 5</div><h4>Mapa de monetização</h4><p>Um exercício guiado para definir suas primeiras fontes de receita.</p></div>
+    </div>
+  </div>
+</section>
+
+
+
+<section id="depoimentos" class="testimonials">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="tag">Resultados reais</div>
+      <h2>Quem já passou pelo método</h2>
+    </div>
+    <div class="t-grid">
+      <div class="t-card">
+        <p class="t-quote">"Parei de me preocupar só com views e comecei a pensar no canal como negócio. Isso mudou tudo."</p>
+        <div class="t-who">Aluna do Método YouTube 360°</div>
+      </div>
+      <div class="t-card">
+        <p class="t-quote">"O plano de 30 dias foi o que me tirou do trava e me fez publicar de verdade, com estratégia."</p>
+        <div class="t-who">Aluno do Método YouTube 360°</div>
+      </div>
+      <div class="t-card">
+        <p class="t-quote">"A Rose ensina de um jeito direto, sem enrolação. Cada módulo já sai aplicado no mesmo dia."</p>
+        <div class="t-who">Aluna do Método YouTube 360°</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contato" class="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="tag" style="color:var(--brass-deep); font-size:.85rem; margin-bottom:14px;">Garanta sua vaga</div>
+      <h2>Pronta para transformar seu canal?</h2>
+      <p>Fale com a Rose pelo WhatsApp para confirmar sua inscrição no Método YouTube 360° e tirar qualquer dúvida antes de começar.</p>
+      <div class="contact-actions">
+        <a href="https://wa.me/5531975219757" target="_blank" rel="noopener" class="btn btn-solid">Falar no WhatsApp</a>
+        <a href="#metodo" class="btn btn-line">Rever o conteúdo</a>
+      </div>
+    </div>
+    <div class="contact-card">
+      <div class="plan-badge" style="margin-bottom:6px;">Método YouTube 360°</div>
+      <div class="price" style="margin-bottom:22px;">R$ 39,90</div>
+      <ul style="list-style:none; padding:0; margin:0 0 26px; display:flex; flex-direction:column; gap:10px;">
+        <li style="font-size:.92rem; padding-left:18px; position:relative;"><span style="position:absolute; left:0; color:var(--brass-deep);">—</span>20 aulas em vídeo, em 4 fases</li>
+        <li style="font-size:.92rem; padding-left:18px; position:relative;"><span style="position:absolute; left:0; color:var(--brass-deep);">—</span>5 bônus inclusos</li>
+        <li style="font-size:.92rem; padding-left:18px; position:relative;"><span style="position:absolute; left:0; color:var(--brass-deep);">—</span>Suporte direto pelo WhatsApp</li>
+      </ul>
+      <div class="row"><span>WhatsApp</span><span>(31) 97521-9757</span></div>
+      <div class="row"><span>Atendimento</span><span>100% online</span></div>
+      <div class="row"><span>Instagram</span><span>em breve</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-row">
+    <span>© 2026 Rose Freitas — Negócios & Marketing</span>
+    <span>Mentoria online</span>
+  </div>
+</footer>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+</script>
+
+</body>
+</html>
